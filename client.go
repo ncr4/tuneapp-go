@@ -1,6 +1,9 @@
 package tuneuptechnology
 
 // Setup the HTTP client
-var apiBaseURL 	string = "https://app.tuneuptechnology.com/api/"
-var auth 		string = ""
-var api_key 	string = ""
+const APIBaseUrl = "https://app.tuneuptechnology.com/api/"
+
+type Client struct {
+	Auth 		string `json:"auth"`
+	APIKey		string `json:"api_key"`
+}

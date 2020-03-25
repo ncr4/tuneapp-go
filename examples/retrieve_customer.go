@@ -5,13 +5,16 @@ import (
 )
 
 func main() {
-	tuneuptechnology.RetrieveCustomers(
+	tuneuptechnology.RetrieveCustomer(
 		// Pass in your email and API key
 		&tuneuptechnology.Client{
 			Auth: "",
 			APIKey: "",
 		},
 
-		// Retrieves all customers
+		// retrieves customer with ID #23
+		&tuneuptechnology.Customer{
+			Id: 23,
+		},
 	)
 }

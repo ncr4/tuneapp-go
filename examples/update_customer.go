@@ -5,13 +5,16 @@ import (
 )
 
 func main() {
-	// Define your credentials
-	var auth string = "YOUR_EMAIL_HERE"
-	var api_key string = "YOUR_API_KEY_HERE"
-	
-	// Call an action
-	tuneuptechnology.CreateCustomer(auth, api_key, 
+	tuneuptechnology.UpdateCustomer(
+		// Pass in your email and API key
+		&tuneuptechnology.Client{
+			Auth: "",
+			APIKey: "",
+		},
+		
+		// Update a customer passing in all the desired params to be updated
 		&tuneuptechnology.Customer{
+			Id: 1, // the ID of the customer you want to update
 			Firstname: "Go",
 			Lastname: "Test",
 			Email: "go-test@test.com",

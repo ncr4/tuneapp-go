@@ -2,7 +2,7 @@
 
 The Go client library for the Tuneup Technology App.
 
-**Currently in beta**, the Go client library allows you to interact with the customers, tickets, inventory, and locations objects of the application.
+The Go client library allows you to interact with the customers, tickets, inventory, and locations objects without needing to do the hard work of binding your calls and data to endpoints. Simply call an action such as `CreateCustomer` and pass some data and let the library do the rest.
 
 ## Install
 
@@ -20,29 +20,48 @@ import (
 )
 
 func main() {
-	// Define your credentials
-	var auth string = "YOUR_EMAIL_HERE"
-	var api_key string = "YOUR_API_KEY_HERE"
-	
-	// Call an action
-	tuneuptechnology.RetrieveCustomers(auth, api_key)
+	tuneuptechnology.CreateCustomer(
+		// Pass in your email and API key
+		&tuneuptechnology.Client{
+			Auth: "",
+			APIKey: "",
+		},
+
+		// Create a customer passing in all required params
+		&tuneuptechnology.Customer{
+			Firstname: "Go",
+			Lastname: "Test",
+			Email: "go-test@test.com",
+			Phone: "8018981234",
+			UserId: 1,
+			Notes: "Testing some notes here",
+			LocationId: 1,
+		},
+	)
 }
 ```
+
+Other examples can be found in the `/examples` directory. Alter according to your needs.
 
 ## Usage
 
 ```bash
-go run my_file.go
+go run create_customer.go
 ```
 
 ## Documentation
 
 Up-to-date documentation can be [found here](https://app.tuneuptechnology.com/docs/api).
 
+## Releasing
+
+1. Update the Version constant in `version.go`
+1. Update CHANGELOG
+1. Create a git tag with proper Go version semantics (eg: v1.0.0)
+
 ## TODO
 
 - User-Agent
-- Client setup (API Key/Auth)
 - Response (JSON pretty printed)
 - Error handling
 - Consolidate and re-use code

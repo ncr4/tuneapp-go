@@ -11,31 +11,29 @@ import (
     "strconv" // converts int's to strings
 )
 
-// Customer Struct
-type Customer struct {    
-    Id          int     `json:"id"`
-    Firstname   string  `json:"firstname"`
-    Lastname    string  `json:"lastname"`
-    Email       string  `json:"email"`
-    Phone       string  `json:"phone"`
-    UserId      int     `json:"user_id"`
-    Notes       string  `json:"notes"`
-    LocationId  int     `json:"location_id"`
+// Inventory Struct
+type Inventory struct {    
+    Id              int     `json:"id"`
+    Name            string  `json:"name"`
+    Quantity        int     `json:"quantity"`
+    InventoryTypeId int     `json:"inventory_type_id"`
+    SKU             string  `json:"sku"`
+    PartPrice       string  `json:"part_price"`
+    LocationId      int     `json:"location_id"`
 }
 
-// Create a customer
-func CreateCustomer(client *Client, data *Customer) {
-	endpoint := APIBaseUrl + "customers/create"
+// Create an inventory item
+func CreateInventory(client *Client, data *Inventory) {
+	endpoint := APIBaseUrl + "inventory/create"
 
 	values := map[string]interface{}{
 		"auth": client.Auth,
         "api_key": client.APIKey,
-        "firstname": data.Firstname,
-        "lastname": data.Lastname,
-        "email": data.Email,
-        "phone": data.Phone,
-        "user_id": data.UserId,
-        "notes": data.Notes,
+        "name": data.Name,
+        "quantity": data.Quantity,
+        "inventory_type_id": data.InventoryTypeId,
+        "sku": data.SKU,
+        "part_price": data.PartPrice,
         "location_id": data.LocationId,
 	}
 	jsonValue, _ := json.Marshal(values)
@@ -54,9 +52,9 @@ func CreateCustomer(client *Client, data *Customer) {
     fmt.Println(string(responseData))
 }
 
-// Retrieve a list of customers
-func RetrieveCustomers(client *Client) {
-	endpoint := APIBaseUrl + "customers"
+// Retrieve a list of inventory items
+func RetrieveInventorys(client *Client) {
+	endpoint := APIBaseUrl + "inventory"
 
 	values := map[string]string{
 		"auth": client.Auth,
@@ -78,9 +76,9 @@ func RetrieveCustomers(client *Client) {
     fmt.Println(string(responseData))
 }
 
-// Retrieve a single customer
-func RetrieveCustomer(client *Client, data *Customer) {
-    endpoint := APIBaseUrl + "customers/" + strconv.Itoa(data.Id)
+// Retrieve a single inventory item
+func RetrieveInventory(client *Client, data *Inventory) {
+    endpoint := APIBaseUrl + "inventory/" + strconv.Itoa(data.Id)
 
     values := map[string]string{
 		"auth": client.Auth,
@@ -102,19 +100,18 @@ func RetrieveCustomer(client *Client, data *Customer) {
     fmt.Println(string(responseData))
 }
 
-// Update a customer
-func UpdateCustomer(client *Client, data *Customer) {
-    endpoint := APIBaseUrl + "customers/" + strconv.Itoa(data.Id) + "/update"
+// Update an inventory item
+func UpdateInventory(client *Client, data *Inventory) {
+    endpoint := APIBaseUrl + "inventory/" + strconv.Itoa(data.Id) + "/update"
 
 	values := map[string]interface{}{
 		"auth": client.Auth,
         "api_key": client.APIKey,
-        "firstname": data.Firstname,
-        "lastname": data.Lastname,
-        "email": data.Email,
-        "phone": data.Phone,
-        "user_id": data.UserId,
-        "notes": data.Notes,
+        "name": data.Name,
+        "quantity": data.Quantity,
+        "inventory_type_id": data.InventoryTypeId,
+        "sku": data.SKU,
+        "part_price": data.PartPrice,
         "location_id": data.LocationId,
 	}
     jsonValue, _ := json.Marshal(values)
@@ -133,9 +130,9 @@ func UpdateCustomer(client *Client, data *Customer) {
     fmt.Println(string(responseData))
 }
 
-// Delete a customer
-func DeleteCustomer(client *Client, data *Customer) {
-    endpoint := APIBaseUrl + "customers/" + strconv.Itoa(data.Id) + "/delete"
+// Delete an inventory item
+func DeleteInventory(client *Client, data *Inventory) {
+    endpoint := APIBaseUrl + "inventorys/" + strconv.Itoa(data.Id) + "/delete"
 
     values := map[string]string{
 		"auth": client.Auth,

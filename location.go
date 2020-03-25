@@ -11,32 +11,28 @@ import (
     "strconv" // converts int's to strings
 )
 
-// Customer Struct
-type Customer struct {    
-    Id          int     `json:"id"`
-    Firstname   string  `json:"firstname"`
-    Lastname    string  `json:"lastname"`
-    Email       string  `json:"email"`
-    Phone       string  `json:"phone"`
-    UserId      int     `json:"user_id"`
-    Notes       string  `json:"notes"`
-    LocationId  int     `json:"location_id"`
+// Location Struct
+type Location struct {    
+    Id     int     `json:"id"`
+    Name   string  `json:"name"`
+    Street string  `json:"street"`
+    City   string  `json:"city"`
+    State  string  `json:"state"`
+    Zip    int     `json:"zip"`
 }
 
-// Create a customer
-func CreateCustomer(client *Client, data *Customer) {
-	endpoint := APIBaseUrl + "customers/create"
+// Create a location
+func CreateLocation(client *Client, data *Location) {
+	endpoint := APIBaseUrl + "locations/create"
 
 	values := map[string]interface{}{
 		"auth": client.Auth,
         "api_key": client.APIKey,
-        "firstname": data.Firstname,
-        "lastname": data.Lastname,
-        "email": data.Email,
-        "phone": data.Phone,
-        "user_id": data.UserId,
-        "notes": data.Notes,
-        "location_id": data.LocationId,
+        "name": data.Name,
+        "street": data.Street,
+        "city": data.City,
+        "state": data.State,
+        "zip": data.Zip,
 	}
 	jsonValue, _ := json.Marshal(values)
 
@@ -54,9 +50,9 @@ func CreateCustomer(client *Client, data *Customer) {
     fmt.Println(string(responseData))
 }
 
-// Retrieve a list of customers
-func RetrieveCustomers(client *Client) {
-	endpoint := APIBaseUrl + "customers"
+// Retrieve a list of locations
+func RetrieveLocations(client *Client) {
+	endpoint := APIBaseUrl + "locations"
 
 	values := map[string]string{
 		"auth": client.Auth,
@@ -78,9 +74,9 @@ func RetrieveCustomers(client *Client) {
     fmt.Println(string(responseData))
 }
 
-// Retrieve a single customer
-func RetrieveCustomer(client *Client, data *Customer) {
-    endpoint := APIBaseUrl + "customers/" + strconv.Itoa(data.Id)
+// Retrieve a single location
+func RetrieveLocation(client *Client, data *Location) {
+    endpoint := APIBaseUrl + "locations/" + strconv.Itoa(data.Id)
 
     values := map[string]string{
 		"auth": client.Auth,
@@ -102,20 +98,18 @@ func RetrieveCustomer(client *Client, data *Customer) {
     fmt.Println(string(responseData))
 }
 
-// Update a customer
-func UpdateCustomer(client *Client, data *Customer) {
-    endpoint := APIBaseUrl + "customers/" + strconv.Itoa(data.Id) + "/update"
+// Update a location
+func UpdateLocation(client *Client, data *Location) {
+    endpoint := APIBaseUrl + "locations/" + strconv.Itoa(data.Id) + "/update"
 
 	values := map[string]interface{}{
 		"auth": client.Auth,
         "api_key": client.APIKey,
-        "firstname": data.Firstname,
-        "lastname": data.Lastname,
-        "email": data.Email,
-        "phone": data.Phone,
-        "user_id": data.UserId,
-        "notes": data.Notes,
-        "location_id": data.LocationId,
+        "name": data.Name,
+        "street": data.Street,
+        "city": data.City,
+        "state": data.State,
+        "zip": data.Zip,
 	}
     jsonValue, _ := json.Marshal(values)
 
@@ -133,9 +127,9 @@ func UpdateCustomer(client *Client, data *Customer) {
     fmt.Println(string(responseData))
 }
 
-// Delete a customer
-func DeleteCustomer(client *Client, data *Customer) {
-    endpoint := APIBaseUrl + "customers/" + strconv.Itoa(data.Id) + "/delete"
+// Delete a location
+func DeleteLocation(client *Client, data *Location) {
+    endpoint := APIBaseUrl + "locations/" + strconv.Itoa(data.Id) + "/delete"
 
     values := map[string]string{
 		"auth": client.Auth,
