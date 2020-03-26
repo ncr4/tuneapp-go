@@ -63,5 +63,4 @@ Up-to-date documentation can be [found here](https://app.tuneuptechnology.com/do
 
 - User-Agent
 - Response (JSON pretty printed)
-- Error handling
-- Consolidate and re-use code
+- Remove double maps and use structs as they were meant

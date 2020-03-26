@@ -1,3 +1,3 @@
 package tuneuptechnology
 
-const Version = "1.0.0"
+const Version = "0.2.0"

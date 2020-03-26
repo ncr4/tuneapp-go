@@ -1,14 +1,7 @@
 package tuneuptechnology
 
 import (
-    "fmt" // format i/o
-    "io/ioutil" // read JSON
-    "log" // log errors
-    "net/http" // client for accessing the API
-	"os" // allows us to exit on error
-	"bytes" // needed for json
-    "encoding/json" // json output
-    "strconv" // converts int's to strings
+    "strconv"
 )
 
 // Customer Struct
@@ -25,134 +18,74 @@ type Customer struct {
 
 // Create a customer
 func CreateCustomer(client *Client, data *Customer) {
-	endpoint := APIBaseUrl + "customers/create"
-
 	values := map[string]interface{}{
-		"auth": client.Auth,
-        "api_key": client.APIKey,
-        "firstname": data.Firstname,
-        "lastname": data.Lastname,
-        "email": data.Email,
-        "phone": data.Phone,
-        "user_id": data.UserId,
-        "notes": data.Notes,
-        "location_id": data.LocationId,
+		"auth":         client.Auth,
+        "api_key":      client.APIKey,
+        "firstname":    data.Firstname,
+        "lastname":     data.Lastname,
+        "email":        data.Email,
+        "phone":        data.Phone,
+        "user_id":      data.UserId,
+        "notes":        data.Notes,
+        "location_id":  data.LocationId,
 	}
-	jsonValue, _ := json.Marshal(values)
 
-	response, err := http.Post(endpoint, "application/json", bytes.NewBuffer(jsonValue))
+    endpoint := APIBaseUrl + "customers/create"
 
-    if err != nil {
-        fmt.Print(err.Error())
-        os.Exit(1)
-    }
-
-    responseData, err := ioutil.ReadAll(response.Body)
-    if err != nil {
-        log.Fatal(err)
-    }
-    fmt.Println(string(responseData))
+    Response(values, endpoint)
 }
 
 // Retrieve a list of customers
 func RetrieveCustomers(client *Client) {
-	endpoint := APIBaseUrl + "customers"
-
-	values := map[string]string{
+    values := map[string]interface{}{
 		"auth": client.Auth,
         "api_key": client.APIKey,
-	}
-	jsonValue, _ := json.Marshal(values)
-
-	response, err := http.Post(endpoint, "application/json", bytes.NewBuffer(jsonValue))
-
-    if err != nil {
-        fmt.Print(err.Error())
-        os.Exit(1)
     }
 
-    responseData, err := ioutil.ReadAll(response.Body)
-    if err != nil {
-        log.Fatal(err)
-    }
-    fmt.Println(string(responseData))
+    endpoint := APIBaseUrl + "customers"
+
+    Response(values, endpoint)
 }
 
 // Retrieve a single customer
 func RetrieveCustomer(client *Client, data *Customer) {
-    endpoint := APIBaseUrl + "customers/" + strconv.Itoa(data.Id)
-
-    values := map[string]string{
+    values := map[string]interface{}{
 		"auth": client.Auth,
         "api_key": client.APIKey,
     }
-    jsonValue, _ := json.Marshal(values)
 
-    response, err := http.Post(endpoint, "application/json", bytes.NewBuffer(jsonValue))
+    endpoint := APIBaseUrl + "customers/" + strconv.Itoa(data.Id)
 
-    if err != nil {
-        fmt.Print(err.Error())
-        os.Exit(1)
-    }
-
-    responseData, err := ioutil.ReadAll(response.Body)
-    if err != nil {
-        log.Fatal(err)
-    }
-    fmt.Println(string(responseData))
+    Response(values, endpoint)
 }
 
 // Update a customer
 func UpdateCustomer(client *Client, data *Customer) {
+	values := map[string]interface{}{
+		"auth":         client.Auth,
+        "api_key":      client.APIKey,
+        "firstname":    data.Firstname,
+        "lastname":     data.Lastname,
+        "email":        data.Email,
+        "phone":        data.Phone,
+        "user_id":      data.UserId,
+        "notes":        data.Notes,
+        "location_id":  data.LocationId,
+	}
+
     endpoint := APIBaseUrl + "customers/" + strconv.Itoa(data.Id) + "/update"
 
-	values := map[string]interface{}{
-		"auth": client.Auth,
-        "api_key": client.APIKey,
-        "firstname": data.Firstname,
-        "lastname": data.Lastname,
-        "email": data.Email,
-        "phone": data.Phone,
-        "user_id": data.UserId,
-        "notes": data.Notes,
-        "location_id": data.LocationId,
-	}
-    jsonValue, _ := json.Marshal(values)
-
-    response, err := http.Post(endpoint, "application/json", bytes.NewBuffer(jsonValue))
-
-    if err != nil {
-        fmt.Print(err.Error())
-        os.Exit(1)
-    }
-
-    responseData, err := ioutil.ReadAll(response.Body)
-    if err != nil {
-        log.Fatal(err)
-    }
-    fmt.Println(string(responseData))
+    Response(values, endpoint)
 }
 
 // Delete a customer
 func DeleteCustomer(client *Client, data *Customer) {
-    endpoint := APIBaseUrl + "customers/" + strconv.Itoa(data.Id) + "/delete"
-
-    values := map[string]string{
+    values := map[string]interface{}{
 		"auth": client.Auth,
         "api_key": client.APIKey,
     }
-    jsonValue, _ := json.Marshal(values)
 
-    response, err := http.Post(endpoint, "application/json", bytes.NewBuffer(jsonValue))
+    endpoint := APIBaseUrl + "customers/" + strconv.Itoa(data.Id) + "/delete"
 
-    if err != nil {
-        fmt.Print(err.Error())
-        os.Exit(1)
-    }
-
-    responseData, err := ioutil.ReadAll(response.Body)
-    if err != nil {
-        log.Fatal(err)
-    }
-    fmt.Println(string(responseData))
+    Response(values, endpoint)
 }

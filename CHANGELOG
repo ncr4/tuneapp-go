@@ -1,0 +1,17 @@
+=== 0.2.0 03/25/2020
+
+* Added Inventory actions
+* Added Location actions
+* Added Ticket actions
+* Consolidated and re-used code in a proper client/response struct and function
+* Added a complete set of examples
+* This release is considered the MVP
+
+=== 0.1.0 03/24/2020
+
+* Working customer actions
+* Added documentation
+
+=== 0.0.1 03/23/2020
+
+* Initial release, can retrieve customer records

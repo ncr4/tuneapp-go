@@ -1,14 +1,7 @@
 package tuneuptechnology
 
 import (
-    "fmt" // format i/o
-    "io/ioutil" // read JSON
-    "log" // log errors
-    "net/http" // client for accessing the API
-	"os" // allows us to exit on error
-	"bytes" // needed for json
-    "encoding/json" // json output
-    "strconv" // converts int's to strings
+    "strconv"
 )
 
 // Ticket Struct
@@ -28,140 +21,80 @@ type Ticket struct {
 
 // Create a ticket
 func CreateTicket(client *Client, data *Ticket) {
-	endpoint := APIBaseUrl + "tickets/create"
-
 	values := map[string]interface{}{
-		"auth": client.Auth,
-        "api_key": client.APIKey,
-        "customer_id": data.CustomerId,
-        "ticket_type_id": data.TicketTypeId,
-        "serial": data.Serial,
-        "user_id": data.UserId,
-        "notes": data.Notes,
-        "title": data.Title,
-        "status": data.Status,
-        "device": data.Device,
-        "imei": data.IMEI,
-        "location_id": data.LocationId,
-	}
-	jsonValue, _ := json.Marshal(values)
-
-	response, err := http.Post(endpoint, "application/json", bytes.NewBuffer(jsonValue))
-
-    if err != nil {
-        fmt.Print(err.Error())
-        os.Exit(1)
+		"auth":             client.Auth,
+        "api_key":          client.APIKey,
+        "customer_id":      data.CustomerId,
+        "ticket_type_id":   data.TicketTypeId,
+        "serial":           data.Serial,
+        "user_id":          data.UserId,
+        "notes":            data.Notes,
+        "title":            data.Title,
+        "status":           data.Status,
+        "device":           data.Device,
+        "imei":             data.IMEI,
+        "location_id":      data.LocationId,
     }
 
-    responseData, err := ioutil.ReadAll(response.Body)
-    if err != nil {
-        log.Fatal(err)
-    }
-    fmt.Println(string(responseData))
+    endpoint := APIBaseUrl + "tickets/create"
+
+    Response(values, endpoint)
 }
 
 // Retrieve a list of tickets
 func RetrieveTickets(client *Client) {
-	endpoint := APIBaseUrl + "tickets"
-
-	values := map[string]string{
+	values := map[string]interface{}{
 		"auth": client.Auth,
         "api_key": client.APIKey,
-	}
-	jsonValue, _ := json.Marshal(values)
-
-	response, err := http.Post(endpoint, "application/json", bytes.NewBuffer(jsonValue))
-
-    if err != nil {
-        fmt.Print(err.Error())
-        os.Exit(1)
     }
+    
+    endpoint := APIBaseUrl + "tickets"
 
-    responseData, err := ioutil.ReadAll(response.Body)
-    if err != nil {
-        log.Fatal(err)
-    }
-    fmt.Println(string(responseData))
+    Response(values, endpoint)
 }
 
 // Retrieve a single ticket
 func RetrieveTicket(client *Client, data *Ticket) {
-    endpoint := APIBaseUrl + "tickets/" + strconv.Itoa(data.Id)
-
-    values := map[string]string{
+    values := map[string]interface{}{
 		"auth": client.Auth,
         "api_key": client.APIKey,
     }
-    jsonValue, _ := json.Marshal(values)
 
-    response, err := http.Post(endpoint, "application/json", bytes.NewBuffer(jsonValue))
+    endpoint := APIBaseUrl + "tickets/" + strconv.Itoa(data.Id)
 
-    if err != nil {
-        fmt.Print(err.Error())
-        os.Exit(1)
-    }
-
-    responseData, err := ioutil.ReadAll(response.Body)
-    if err != nil {
-        log.Fatal(err)
-    }
-    fmt.Println(string(responseData))
+    Response(values, endpoint)
 }
 
 // Update a ticket
 func UpdateTicket(client *Client, data *Ticket) {
+	values := map[string]interface{}{
+		"auth":             client.Auth,
+        "api_key":          client.APIKey,
+        "customer_id":      data.CustomerId,
+        "ticket_type_id":   data.TicketTypeId,
+        "serial":           data.Serial,
+        "user_id":          data.UserId,
+        "notes":            data.Notes,
+        "title":            data.Title,
+        "status":           data.Status,
+        "device":           data.Device,
+        "imei":             data.IMEI,
+        "location_id":      data.LocationId,
+    }
+    
     endpoint := APIBaseUrl + "tickets/" + strconv.Itoa(data.Id) + "/update"
 
-	values := map[string]interface{}{
-		"auth": client.Auth,
-        "api_key": client.APIKey,
-        "customer_id": data.CustomerId,
-        "ticket_type_id": data.TicketTypeId,
-        "serial": data.Serial,
-        "user_id": data.UserId,
-        "notes": data.Notes,
-        "title": data.Title,
-        "status": data.Status,
-        "device": data.Device,
-        "imei": data.IMEI,
-        "location_id": data.LocationId,
-	}
-    jsonValue, _ := json.Marshal(values)
-
-    response, err := http.Post(endpoint, "application/json", bytes.NewBuffer(jsonValue))
-
-    if err != nil {
-        fmt.Print(err.Error())
-        os.Exit(1)
-    }
-
-    responseData, err := ioutil.ReadAll(response.Body)
-    if err != nil {
-        log.Fatal(err)
-    }
-    fmt.Println(string(responseData))
+    Response(values, endpoint)
 }
 
 // Delete a ticket
 func DeleteTicket(client *Client, data *Ticket) {
-    endpoint := APIBaseUrl + "tickets/" + strconv.Itoa(data.Id) + "/delete"
-
-    values := map[string]string{
+    values := map[string]interface{}{
 		"auth": client.Auth,
         "api_key": client.APIKey,
     }
-    jsonValue, _ := json.Marshal(values)
 
-    response, err := http.Post(endpoint, "application/json", bytes.NewBuffer(jsonValue))
+    endpoint := APIBaseUrl + "tickets/" + strconv.Itoa(data.Id) + "/delete"
 
-    if err != nil {
-        fmt.Print(err.Error())
-        os.Exit(1)
-    }
-
-    responseData, err := ioutil.ReadAll(response.Body)
-    if err != nil {
-        log.Fatal(err)
-    }
-    fmt.Println(string(responseData))
+    Response(values, endpoint)
 }
