@@ -4,8 +4,9 @@ import (
     "strconv"
 )
 
-// Inventory Struct
-type Inventory struct {    
+type Inventory struct {
+    Auth            string  `json:"auth"`
+    APIKey          string  `json:"api_key"`
     Id              int     `json:"id"`
     Name            string  `json:"name"`
     Quantity        int     `json:"quantity"`
@@ -16,73 +17,31 @@ type Inventory struct {
 }
 
 // Create an inventory item
-func CreateInventory(client *Client, data *Inventory) {
-	values := map[string]interface{}{
-		"auth":                 client.Auth,
-        "api_key":              client.APIKey,
-        "name":                 data.Name,
-        "quantity":             data.Quantity,
-        "inventory_type_id":    data.InventoryTypeId,
-        "sku":                  data.SKU,
-        "part_price":           data.PartPrice,
-        "location_id":          data.LocationId,
-    }
-    
+func CreateInventory(data *Inventory) map[string]interface{} {
     endpoint := APIBaseUrl + "inventory/create"
-
-    Response(values, endpoint)
+    return Response(data, endpoint)
 }
 
 // Retrieve a list of inventory items
-func RetrieveInventorys(client *Client) {
-	values := map[string]interface{}{
-		"auth": client.Auth,
-        "api_key": client.APIKey,
-	}
-
+func AllInventory(data *Inventory) map[string]interface{} {
     endpoint := APIBaseUrl + "inventory"
-
-    Response(values, endpoint)
+    return Response(data, endpoint)
 }
 
 // Retrieve a single inventory item
-func RetrieveInventory(client *Client, data *Inventory) {
-    values := map[string]interface{}{
-		"auth": client.Auth,
-        "api_key": client.APIKey,
-    }
-
+func RetrieveInventory(data *Inventory) map[string]interface{} {
     endpoint := APIBaseUrl + "inventory/" + strconv.Itoa(data.Id)
-
-    Response(values, endpoint)
+    return Response(data, endpoint)
 }
 
 // Update an inventory item
-func UpdateInventory(client *Client, data *Inventory) {
-	values := map[string]interface{}{
-		"auth":                 client.Auth,
-        "api_key":              client.APIKey,
-        "name":                 data.Name,
-        "quantity":             data.Quantity,
-        "inventory_type_id":    data.InventoryTypeId,
-        "sku":                  data.SKU,
-        "part_price":           data.PartPrice,
-        "location_id":          data.LocationId,
-	}
-
+func UpdateInventory(data *Inventory) map[string]interface{} {
     endpoint := APIBaseUrl + "inventory/" + strconv.Itoa(data.Id) + "/update"
-
-    Response(values, endpoint)
+    return Response(data, endpoint)
 }
 
 // Delete an inventory item
-func DeleteInventory(client *Client, data *Inventory) {
-    values := map[string]interface{}{
-		"auth": client.Auth,
-        "api_key": client.APIKey,
-    }
-
+func DeleteInventory(data *Inventory) map[string]interface{} {
     endpoint := APIBaseUrl + "inventorys/" + strconv.Itoa(data.Id) + "/delete"
-
-    Response(values, endpoint)
+    return Response(data, endpoint)
 }
