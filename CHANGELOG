@@ -1,4 +1,11 @@
-=== 0.2.0 03/25/2020
+=== 1.0.0 (04/17/2020)
+
+* Removed lots of duplicate code
+* Use maps properly and return data instead of assuming the user wanted to print instead
+* Use built in structures
+* Better examples and documentation
+
+=== 0.2.0 (03/25/2020)
 
 * Added Inventory actions
 * Added Location actions
@@ -7,11 +14,11 @@
 * Added a complete set of examples
 * This release is considered the MVP
 
-=== 0.1.0 03/24/2020
+=== 0.1.0 (03/24/2020)
 
 * Working customer actions
 * Added documentation
 
-=== 0.0.1 03/23/2020
+=== 0.0.1 (03/23/2020)
 
 * Initial release, can retrieve customer records
