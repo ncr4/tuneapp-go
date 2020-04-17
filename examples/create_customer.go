@@ -1,26 +1,29 @@
 package main
 
 import (
+	"os"
 	"github.com/ncr4/tuneuptechnology-go"
 )
 
 func main() {
-	tuneuptechnology.CreateCustomer(
-		// Pass in your email and API key
-		&tuneuptechnology.Client{
-			Auth: "",
-			APIKey: "",
-		},
+	// Setup your email and API key
+	api_email := os.Getenv("API_EMAIL")
+	api_key := os.Getenv("API_KEY")
 
-		// Create a customer passing in all required params
+	// Create a customer passing in all required params
+	customer := tuneuptechnology.CreateCustomer(
 		&tuneuptechnology.Customer{
-			Firstname: "Go",
-			Lastname: "Test",
-			Email: "go-test@test.com",
-			Phone: "8018981234",
+			Auth: api_email,
+			APIKey: api_key,
+			Firstname: "Jake",
+			Lastname: "Peralta",
+			Email: "jake@example.com",
+			Phone: "8015551234",
 			UserId: 1,
-			Notes: "Testing some notes here",
+			Notes: "Believes he is a good detective.",
 			LocationId: 1,
 		},
 	)
+
+	tuneuptechnology.PrettyPrint(customer)
 }

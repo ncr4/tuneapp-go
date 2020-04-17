@@ -4,82 +4,43 @@ import (
     "strconv"
 )
 
-// Location Struct
-type Location struct {    
-    Id     int     `json:"id"`
-    Name   string  `json:"name"`
-    Street string  `json:"street"`
-    City   string  `json:"city"`
-    State  string  `json:"state"`
-    Zip    int     `json:"zip"`
+type Location struct {
+    Auth    string  `json:"auth"`
+    APIKey  string  `json:"api_key"`
+    Id      int     `json:"id"`
+    Name    string  `json:"name"`
+    Street  string  `json:"street"`
+    City    string  `json:"city"`
+    State   string  `json:"state"`
+    Zip     int     `json:"zip"`
 }
 
 // Create a location
-func CreateLocation(client *Client, data *Location) {
-	values := map[string]interface{}{
-		"auth":     client.Auth,
-        "api_key":  client.APIKey,
-        "name":     data.Name,
-        "street":   data.Street,
-        "city":     data.City,
-        "state":    data.State,
-        "zip":      data.Zip,
-	}
-
+func CreateLocation(data *Location) map[string]interface{} {
     endpoint := APIBaseUrl + "locations/create"
-
-    Response(values, endpoint)
+    return Response(data, endpoint)
 }
 
 // Retrieve a list of locations
-func RetrieveLocations(client *Client) {
-	values := map[string]interface{}{
-		"auth": client.Auth,
-        "api_key": client.APIKey,
-	}
-
+func AllLocations(data *Location) map[string]interface{} {
     endpoint := APIBaseUrl + "locations"
-
-    Response(values, endpoint)
+    return Response(data, endpoint)
 }
 
 // Retrieve a single location
-func RetrieveLocation(client *Client, data *Location) {
-    values := map[string]interface{}{
-		"auth": client.Auth,
-        "api_key": client.APIKey,
-    }
-
+func RetrieveLocation(data *Location) map[string]interface{} {
     endpoint := APIBaseUrl + "locations/" + strconv.Itoa(data.Id)
-
-    Response(values, endpoint)
+    return Response(data, endpoint)
 }
 
 // Update a location
-func UpdateLocation(client *Client, data *Location) {
-	values := map[string]interface{}{
-		"auth":     client.Auth,
-        "api_key":  client.APIKey,
-        "name":     data.Name,
-        "street":   data.Street,
-        "city":     data.City,
-        "state":    data.State,
-        "zip":      data.Zip,
-    }
-    
+func UpdateLocation(data *Location) map[string]interface{} {
     endpoint := APIBaseUrl + "locations/" + strconv.Itoa(data.Id) + "/update"
-
-    Response(values, endpoint)
+    return Response(data, endpoint)
 }
 
 // Delete a location
-func DeleteLocation(client *Client, data *Location) {
-    values := map[string]interface{}{
-		"auth": client.Auth,
-        "api_key": client.APIKey,
-    }
-
+func DeleteLocation(data *Location) map[string]interface{} {
     endpoint := APIBaseUrl + "locations/" + strconv.Itoa(data.Id) + "/delete"
-
-    Response(values, endpoint)
+    return Response(data, endpoint)
 }

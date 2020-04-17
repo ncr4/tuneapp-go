@@ -4,8 +4,9 @@ import (
     "strconv"
 )
 
-// Ticket Struct
-type Ticket struct {    
+type Ticket struct {
+    Auth            string  `json:"auth"`
+    APIKey          string  `json:"api_key"`
     Id              int     `json:"id"`
     CustomerId      int     `json:"customer_id"`
     TicketTypeId    int     `json:"ticket_type_id"`
@@ -20,81 +21,31 @@ type Ticket struct {
 }
 
 // Create a ticket
-func CreateTicket(client *Client, data *Ticket) {
-	values := map[string]interface{}{
-		"auth":             client.Auth,
-        "api_key":          client.APIKey,
-        "customer_id":      data.CustomerId,
-        "ticket_type_id":   data.TicketTypeId,
-        "serial":           data.Serial,
-        "user_id":          data.UserId,
-        "notes":            data.Notes,
-        "title":            data.Title,
-        "status":           data.Status,
-        "device":           data.Device,
-        "imei":             data.IMEI,
-        "location_id":      data.LocationId,
-    }
-
+func CreateTicket(data *Ticket) map[string]interface{} {
     endpoint := APIBaseUrl + "tickets/create"
-
-    Response(values, endpoint)
+    return Response(data, endpoint)
 }
 
 // Retrieve a list of tickets
-func RetrieveTickets(client *Client) {
-	values := map[string]interface{}{
-		"auth": client.Auth,
-        "api_key": client.APIKey,
-    }
-    
+func AllTickets(data *Ticket) map[string]interface{} {
     endpoint := APIBaseUrl + "tickets"
-
-    Response(values, endpoint)
+    return Response(data, endpoint)
 }
 
 // Retrieve a single ticket
-func RetrieveTicket(client *Client, data *Ticket) {
-    values := map[string]interface{}{
-		"auth": client.Auth,
-        "api_key": client.APIKey,
-    }
-
+func RetrieveTicket(data *Ticket) map[string]interface{} {
     endpoint := APIBaseUrl + "tickets/" + strconv.Itoa(data.Id)
-
-    Response(values, endpoint)
+    return Response(data, endpoint)
 }
 
 // Update a ticket
-func UpdateTicket(client *Client, data *Ticket) {
-	values := map[string]interface{}{
-		"auth":             client.Auth,
-        "api_key":          client.APIKey,
-        "customer_id":      data.CustomerId,
-        "ticket_type_id":   data.TicketTypeId,
-        "serial":           data.Serial,
-        "user_id":          data.UserId,
-        "notes":            data.Notes,
-        "title":            data.Title,
-        "status":           data.Status,
-        "device":           data.Device,
-        "imei":             data.IMEI,
-        "location_id":      data.LocationId,
-    }
-    
+func UpdateTicket(data *Ticket) map[string]interface{} {
     endpoint := APIBaseUrl + "tickets/" + strconv.Itoa(data.Id) + "/update"
-
-    Response(values, endpoint)
+    return Response(data, endpoint)
 }
 
 // Delete a ticket
-func DeleteTicket(client *Client, data *Ticket) {
-    values := map[string]interface{}{
-		"auth": client.Auth,
-        "api_key": client.APIKey,
-    }
-
+func DeleteTicket(data *Ticket) map[string]interface{} {
     endpoint := APIBaseUrl + "tickets/" + strconv.Itoa(data.Id) + "/delete"
-
-    Response(values, endpoint)
+    return Response(data, endpoint)
 }

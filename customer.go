@@ -4,8 +4,9 @@ import (
     "strconv"
 )
 
-// Customer Struct
-type Customer struct {    
+type Customer struct {
+    Auth        string  `json:"auth"`
+    APIKey      string  `json:"api_key"`
     Id          int     `json:"id"`
     Firstname   string  `json:"firstname"`
     Lastname    string  `json:"lastname"`
@@ -17,75 +18,31 @@ type Customer struct {
 }
 
 // Create a customer
-func CreateCustomer(client *Client, data *Customer) {
-	values := map[string]interface{}{
-		"auth":         client.Auth,
-        "api_key":      client.APIKey,
-        "firstname":    data.Firstname,
-        "lastname":     data.Lastname,
-        "email":        data.Email,
-        "phone":        data.Phone,
-        "user_id":      data.UserId,
-        "notes":        data.Notes,
-        "location_id":  data.LocationId,
-	}
-
+func CreateCustomer(data *Customer) map[string]interface{} {
     endpoint := APIBaseUrl + "customers/create"
-
-    Response(values, endpoint)
+    return Response(data, endpoint)
 }
 
 // Retrieve a list of customers
-func RetrieveCustomers(client *Client) {
-    values := map[string]interface{}{
-		"auth": client.Auth,
-        "api_key": client.APIKey,
-    }
-
+func AllCustomers(data *Customer) map[string]interface{} {
     endpoint := APIBaseUrl + "customers"
-
-    Response(values, endpoint)
+    return Response(data, endpoint)
 }
 
 // Retrieve a single customer
-func RetrieveCustomer(client *Client, data *Customer) {
-    values := map[string]interface{}{
-		"auth": client.Auth,
-        "api_key": client.APIKey,
-    }
-
+func RetrieveCustomer(data *Customer) map[string]interface{} {
     endpoint := APIBaseUrl + "customers/" + strconv.Itoa(data.Id)
-
-    Response(values, endpoint)
+    return Response(data, endpoint)
 }
 
 // Update a customer
-func UpdateCustomer(client *Client, data *Customer) {
-	values := map[string]interface{}{
-		"auth":         client.Auth,
-        "api_key":      client.APIKey,
-        "firstname":    data.Firstname,
-        "lastname":     data.Lastname,
-        "email":        data.Email,
-        "phone":        data.Phone,
-        "user_id":      data.UserId,
-        "notes":        data.Notes,
-        "location_id":  data.LocationId,
-	}
-
+func UpdateCustomer(data *Customer) map[string]interface{} {
     endpoint := APIBaseUrl + "customers/" + strconv.Itoa(data.Id) + "/update"
-
-    Response(values, endpoint)
+    return Response(data, endpoint)
 }
 
 // Delete a customer
-func DeleteCustomer(client *Client, data *Customer) {
-    values := map[string]interface{}{
-		"auth": client.Auth,
-        "api_key": client.APIKey,
-    }
-
+func DeleteCustomer(data *Customer) map[string]interface{} {
     endpoint := APIBaseUrl + "customers/" + strconv.Itoa(data.Id) + "/delete"
-
-    Response(values, endpoint)
+    return Response(data, endpoint)
 }
