@@ -2,14 +2,15 @@
 
 The Go client library for the Tuneup Technology App.
 
-[![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
+[![Build Status](https://github.com/tuneuptechnology/tuneuptechnology-go/workflows/build/badge.svg)](https://github.com/tuneuptechnology/tuneuptechnology-go/actions)
+[![Licence](https://img.shields.io/github/license/tuneuptechnology/tuneuptechnology-go)](LICENSE)
 
 This library allows you to interact with the customers, tickets, inventory, and locations objects without needing to do the hard work of binding your calls and data to endpoints. Simply call an action such as `CreateCustomer` and pass some data and let the library do the rest.
 
 ## Install
 
 ```bash
-go get -u github.com/ncr4/tuneuptechnology-go
+go get -u github.com/tuneuptechnology/tuneuptechnology-go
 ```
 
 ## Example
@@ -18,32 +19,33 @@ go get -u github.com/ncr4/tuneuptechnology-go
 package main
 
 import (
+	"github.com/tuneuptechnology/tuneuptechnology-go"
 	"os"
-	"github.com/ncr4/tuneuptechnology-go"
 )
 
 func main() {
 	// Setup your email and API key
-	api_email := os.Getenv("API_EMAIL")
-	api_key := os.Getenv("API_KEY")
+	apiEmail := os.Getenv("API_EMAIL")
+	apiKey := os.Getenv("API_KEY")
 
 	// Create a customer passing in all required params
 	customer := tuneuptechnology.CreateCustomer(
 		&tuneuptechnology.Customer{
-			Auth: api_email,
-			APIKey: api_key,
-			Firstname: "Jake",
-			Lastname: "Peralta",
-			Email: "jake@example.com",
-			Phone: "8015551234",
-			UserId: 1,
-			Notes: "Believes he is a good detective.",
-			LocationId: 1,
+			Auth:       apiEmail,
+			APIKey:     apiKey,
+			Firstname:  "Jake",
+			Lastname:   "Peralta",
+			Email:      "jake@example.com",
+			Phone:      "8015551234",
+			UserID:     1,
+			Notes:      "Believes he is a good detective.",
+			LocationID: 1,
 		},
 	)
 
 	tuneuptechnology.PrettyPrint(customer)
 }
+
 ```
 
 Other examples can be found in the `/examples` directory. Alter according to your needs.

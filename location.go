@@ -1,46 +1,47 @@
 package tuneuptechnology
 
 import (
-    "strconv"
+	"strconv"
 )
 
+// Location lists all properties of a location
 type Location struct {
-    Auth    string  `json:"auth"`
-    APIKey  string  `json:"api_key"`
-    Id      int     `json:"id"`
-    Name    string  `json:"name"`
-    Street  string  `json:"street"`
-    City    string  `json:"city"`
-    State   string  `json:"state"`
-    Zip     int     `json:"zip"`
+	Auth   string `json:"auth"`
+	APIKey string `json:"api_key"`
+	ID     int    `json:"id"`
+	Name   string `json:"name"`
+	Street string `json:"street"`
+	City   string `json:"city"`
+	State  string `json:"state"`
+	Zip    int    `json:"zip"`
 }
 
-// Create a location
+// CreateLocation creates a location
 func CreateLocation(data *Location) map[string]interface{} {
-    endpoint := APIBaseUrl + "locations/create"
-    return Response(data, endpoint)
+	endpoint := APIBaseURL + "locations/create"
+	return Response(data, endpoint)
 }
 
-// Retrieve a list of locations
+// AllLocations retrieves a list of locations
 func AllLocations(data *Location) map[string]interface{} {
-    endpoint := APIBaseUrl + "locations"
-    return Response(data, endpoint)
+	endpoint := APIBaseURL + "locations"
+	return Response(data, endpoint)
 }
 
-// Retrieve a single location
+// RetrieveLocation retrieves a single location
 func RetrieveLocation(data *Location) map[string]interface{} {
-    endpoint := APIBaseUrl + "locations/" + strconv.Itoa(data.Id)
-    return Response(data, endpoint)
+	endpoint := APIBaseURL + "locations/" + strconv.Itoa(data.ID)
+	return Response(data, endpoint)
 }
 
-// Update a location
+// UpdateLocation updates a location
 func UpdateLocation(data *Location) map[string]interface{} {
-    endpoint := APIBaseUrl + "locations/" + strconv.Itoa(data.Id) + "/update"
-    return Response(data, endpoint)
+	endpoint := APIBaseURL + "locations/" + strconv.Itoa(data.ID) + "/update"
+	return Response(data, endpoint)
 }
 
-// Delete a location
+// DeleteLocation deletes a location
 func DeleteLocation(data *Location) map[string]interface{} {
-    endpoint := APIBaseUrl + "locations/" + strconv.Itoa(data.Id) + "/delete"
-    return Response(data, endpoint)
+	endpoint := APIBaseURL + "locations/" + strconv.Itoa(data.ID) + "/delete"
+	return Response(data, endpoint)
 }

@@ -1,16 +1,16 @@
 package tuneuptechnology
 
 import (
-    "fmt"
-	"os"
 	"encoding/json"
+	"fmt"
+	"os"
 )
 
-// Helper util to pretty print JSON
+// PrettyPrint is a helper util to pretty print JSON
 func PrettyPrint(data map[string]interface{}) {
-    prettyJSON, err := json.MarshalIndent(data, "", "    ")
-    if err != nil {
-    	fmt.Fprintln(os.Stderr, "error creating JSON:", err)
-    }
-    fmt.Printf("%s\n", string(prettyJSON))
+	prettyJSON, err := json.MarshalIndent(data, "", "    ")
+	if err != nil {
+		fmt.Fprintln(os.Stderr, "error creating JSON:", err)
+	}
+	fmt.Printf("%s\n", string(prettyJSON))
 }

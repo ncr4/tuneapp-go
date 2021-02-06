@@ -1,3 +1,3 @@
-module github.com/ncr4/tuneuptechnology-go
+module github.com/tuneuptechnology/tuneuptechnology-go
 
-go 1.14
+go 1.15

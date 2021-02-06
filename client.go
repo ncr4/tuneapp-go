@@ -1,37 +1,45 @@
 package tuneuptechnology
 
 import (
-    "io/ioutil"
-    "net/http"
-	"log"
 	"bytes"
-    "encoding/json"
+	"encoding/json"
+	"io/ioutil"
+	"log"
+	"net/http"
 )
 
-// Setup the HTTP client and response functionality
-const APIBaseUrl = "https://app.tuneuptechnology.com/api/"
+// APIBaseURL sets up the HTTP client and response functionality
+const APIBaseURL = "https://app.tuneuptechnology.com/api/"
 
-// Request a response from the API with supplied data
+// UserAgent sets the user-agent for requests
+const UserAgent = "TuneupTechnologyApp/GoClient/" + Version
+
+// Response requests a response from the API with supplied data
 func Response(data interface{}, endpoint string) map[string]interface{} {
-    // Make a request to the API
-    jsonData, _ := json.Marshal(data)
-	request, err := http.Post(endpoint, "application/json", bytes.NewBuffer(jsonData))
-    if err != nil {
-        log.Fatal(err)
-    }
+	jsonData, _ := json.Marshal(data)
+	request, err := http.Post(
+		endpoint,
+		"application/json",
+		bytes.NewBuffer(jsonData),
+	)
+	if err != nil {
+		log.Fatal(err)
+	}
 
-    // Read the response data from the API
-    responseData, err := ioutil.ReadAll(request.Body)
-    if err != nil {
-        log.Fatal(err)
-    }
+	request.Header.Set("User-Agent", UserAgent)
 
-    // Convert the response to a map
-    var response map[string]interface{}
-    err = json.Unmarshal(responseData, &response)
-    if err != nil {
-        log.Fatal(err)
-    }
+	// Read the response data from the API
+	responseData, err := ioutil.ReadAll(request.Body)
+	if err != nil {
+		log.Fatal(err)
+	}
 
-    return response
+	// Convert the response to a map
+	var response map[string]interface{}
+	err = json.Unmarshal(responseData, &response)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	return response
 }
