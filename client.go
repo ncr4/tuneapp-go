@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"time"
 )
 
 // APIBaseURL sets up the HTTP client and response functionality
@@ -14,10 +15,15 @@ const APIBaseURL = "https://app.tuneuptechnology.com/api/"
 // UserAgent sets the user-agent for requests
 const UserAgent = "TuneupTechnologyApp/GoClient/" + Version
 
-// Response requests a response from the API with supplied data
-func Response(data interface{}, endpoint string) map[string]interface{} {
+// makeHTTPRequest requests a response from the API with supplied data
+func makeHTTPRequest(data interface{}, endpoint string) map[string]interface{} {
 	jsonData, _ := json.Marshal(data)
-	request, err := http.Post(
+
+	client := &http.Client{
+		Timeout: time.Second * 10,
+	}
+
+	request, err := client.Post(
 		endpoint,
 		"application/json",
 		bytes.NewBuffer(jsonData),

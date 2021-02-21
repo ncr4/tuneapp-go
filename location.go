@@ -19,29 +19,29 @@ type Location struct {
 // CreateLocation creates a location
 func CreateLocation(data *Location) map[string]interface{} {
 	endpoint := APIBaseURL + "locations/create"
-	return Response(data, endpoint)
+	return makeHTTPRequest(data, endpoint)
 }
 
 // AllLocations retrieves a list of locations
 func AllLocations(data *Location) map[string]interface{} {
 	endpoint := APIBaseURL + "locations"
-	return Response(data, endpoint)
+	return makeHTTPRequest(data, endpoint)
 }
 
 // RetrieveLocation retrieves a single location
 func RetrieveLocation(data *Location) map[string]interface{} {
 	endpoint := APIBaseURL + "locations/" + strconv.Itoa(data.ID)
-	return Response(data, endpoint)
+	return makeHTTPRequest(data, endpoint)
 }
 
 // UpdateLocation updates a location
 func UpdateLocation(data *Location) map[string]interface{} {
 	endpoint := APIBaseURL + "locations/" + strconv.Itoa(data.ID) + "/update"
-	return Response(data, endpoint)
+	return makeHTTPRequest(data, endpoint)
 }
 
 // DeleteLocation deletes a location
 func DeleteLocation(data *Location) map[string]interface{} {
 	endpoint := APIBaseURL + "locations/" + strconv.Itoa(data.ID) + "/delete"
-	return Response(data, endpoint)
+	return makeHTTPRequest(data, endpoint)
 }

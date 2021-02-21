@@ -20,29 +20,29 @@ type Inventory struct {
 // CreateInventory creates an inventory item
 func CreateInventory(data *Inventory) map[string]interface{} {
 	endpoint := APIBaseURL + "inventory/create"
-	return Response(data, endpoint)
+	return makeHTTPRequest(data, endpoint)
 }
 
 // AllInventory retrieves a list of inventory items
 func AllInventory(data *Inventory) map[string]interface{} {
 	endpoint := APIBaseURL + "inventory"
-	return Response(data, endpoint)
+	return makeHTTPRequest(data, endpoint)
 }
 
 // RetrieveInventory retrieves a single inventory item
 func RetrieveInventory(data *Inventory) map[string]interface{} {
 	endpoint := APIBaseURL + "inventory/" + strconv.Itoa(data.ID)
-	return Response(data, endpoint)
+	return makeHTTPRequest(data, endpoint)
 }
 
 // UpdateInventory updates an inventory item
 func UpdateInventory(data *Inventory) map[string]interface{} {
 	endpoint := APIBaseURL + "inventory/" + strconv.Itoa(data.ID) + "/update"
-	return Response(data, endpoint)
+	return makeHTTPRequest(data, endpoint)
 }
 
 // DeleteInventory deletes an inventory item
 func DeleteInventory(data *Inventory) map[string]interface{} {
 	endpoint := APIBaseURL + "inventorys/" + strconv.Itoa(data.ID) + "/delete"
-	return Response(data, endpoint)
+	return makeHTTPRequest(data, endpoint)
 }

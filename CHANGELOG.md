@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v2.1.0 (2021-02-20)
+
+* Changes `Response` to `makeHTTPRequest`
+* Adds a timeout to requests
+
 ## v2.0.0 (2021-02-05)
 
 * Overhauled properties of go objects (eg: `Id` to `ID`, `Url` to `URL` etc) - breaking change

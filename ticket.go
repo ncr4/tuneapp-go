@@ -24,29 +24,29 @@ type Ticket struct {
 // CreateTicket creates a ticket
 func CreateTicket(data *Ticket) map[string]interface{} {
 	endpoint := APIBaseURL + "tickets/create"
-	return Response(data, endpoint)
+	return makeHTTPRequest(data, endpoint)
 }
 
 // AllTickets retrieves a list of tickets
 func AllTickets(data *Ticket) map[string]interface{} {
 	endpoint := APIBaseURL + "tickets"
-	return Response(data, endpoint)
+	return makeHTTPRequest(data, endpoint)
 }
 
 // RetrieveTicket retrieves a single ticket
 func RetrieveTicket(data *Ticket) map[string]interface{} {
 	endpoint := APIBaseURL + "tickets/" + strconv.Itoa(data.ID)
-	return Response(data, endpoint)
+	return makeHTTPRequest(data, endpoint)
 }
 
 // UpdateTicket updates a ticket
 func UpdateTicket(data *Ticket) map[string]interface{} {
 	endpoint := APIBaseURL + "tickets/" + strconv.Itoa(data.ID) + "/update"
-	return Response(data, endpoint)
+	return makeHTTPRequest(data, endpoint)
 }
 
 // DeleteTicket deletes a ticket
 func DeleteTicket(data *Ticket) map[string]interface{} {
 	endpoint := APIBaseURL + "tickets/" + strconv.Itoa(data.ID) + "/delete"
-	return Response(data, endpoint)
+	return makeHTTPRequest(data, endpoint)
 }

@@ -1,8 +1,9 @@
 package main
 
 import (
-	"github.com/tuneuptechnology/tuneuptechnology-go"
 	"os"
+
+	"github.com/tuneuptechnology/tuneuptechnology-go"
 )
 
 func main() {
