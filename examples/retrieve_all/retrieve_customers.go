@@ -1,23 +1,21 @@
 package main
 
 import (
+	"encoding/json"
+	"fmt"
 	"os"
 
 	"github.com/tuneuptechnology/tuneuptechnology-go"
 )
 
 func main() {
-	// Setup your email and API key
-	apiEmail := os.Getenv("API_EMAIL")
-	apiKey := os.Getenv("API_KEY")
+	client := tuneuptechnology.New(os.Getenv("API_EMAIL"), os.Getenv("API_KEY"))
 
-	// Retrieve all customers
-	customers := tuneuptechnology.AllCustomers(
-		&tuneuptechnology.Customer{
-			Auth:   apiEmail,
-			APIKey: apiKey,
-		},
-	)
+	customers := client.AllCustomers()
 
-	tuneuptechnology.PrettyPrint(customers)
+	prettyJSON, err := json.MarshalIndent(customers, "", "    ")
+	if err != nil {
+		fmt.Fprintln(os.Stderr, "error creating JSON:", err)
+	}
+	fmt.Printf("%s\n", string(prettyJSON))
 }

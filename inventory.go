@@ -6,43 +6,41 @@ import (
 
 // Inventory lists all properties of inventory
 type Inventory struct {
-	Auth            string `json:"auth"`
-	APIKey          string `json:"api_key"`
-	ID              int    `json:"id"`
-	Name            string `json:"name"`
-	Quantity        int    `json:"quantity"`
-	InventoryTypeID int    `json:"inventory_type_id"`
-	SKU             string `json:"sku"`
-	PartPrice       string `json:"part_price"`
-	LocationID      int    `json:"location_id"`
+	ID              int    `json:"id,omitempty"`
+	Name            string `json:"name,omitempty"`
+	Quantity        int    `json:"quantity,omitempty"`
+	InventoryTypeID int    `json:"inventory_type_id,omitempty"`
+	SKU             string `json:"sku,omitempty"`
+	PartPrice       string `json:"part_price,omitempty"`
+	LocationID      int    `json:"location_id,omitempty"`
 }
 
 // CreateInventory creates an inventory item
-func CreateInventory(data *Inventory) map[string]interface{} {
-	endpoint := APIBaseURL + "inventory/create"
-	return makeHTTPRequest(data, endpoint)
+func (client *Client) CreateInventory(data *Inventory) map[string]interface{} {
+	endpoint := client.baseURL() + "inventory"
+	return client.makeHTTPRequest("post", endpoint, data)
 }
 
 // AllInventory retrieves a list of inventory items
-func AllInventory(data *Inventory) map[string]interface{} {
-	endpoint := APIBaseURL + "inventory"
-	return makeHTTPRequest(data, endpoint)
+func (client *Client) AllInventory() map[string]interface{} {
+	endpoint := client.baseURL() + "inventory"
+	return client.makeHTTPRequest("get", endpoint, nil)
 }
 
 // RetrieveInventory retrieves a single inventory item
-func RetrieveInventory(data *Inventory) map[string]interface{} {
-	endpoint := APIBaseURL + "inventory/" + strconv.Itoa(data.ID)
-	return makeHTTPRequest(data, endpoint)
+func (client *Client) RetrieveInventory(id int) map[string]interface{} {
+	endpoint := client.baseURL() + "inventory/" + strconv.Itoa(id)
+	return client.makeHTTPRequest("get", endpoint, nil)
 }
 
 // UpdateInventory updates an inventory item
-func UpdateInventory(data *Inventory) map[string]interface{} {
-	endpoint := APIBaseURL + "inventory/" + strconv.Itoa(data.ID) + "/update"
-	return makeHTTPRequest(data, endpoint)
+func (client *Client) UpdateInventory(id int, data *Inventory) map[string]interface{} {
+	endpoint := client.baseURL() + "inventory/" + strconv.Itoa(id)
+	return client.makeHTTPRequest("patch", endpoint, data)
 }
 
 // DeleteInventory deletes an inventory item
-func DeleteInventory(data *Inventory) map[string]interface{} {
-	endpoint := APIBaseURL + "inventorys/" + strconv.Itoa(data.ID) + "/delete"
-	return makeHTTPRequest(data, endpoint)
+func (client *Client) DeleteInventory(id int) map[string]interface{} {
+	endpoint := client.baseURL() + "inventory/" + strconv.Itoa(id)
+	return client.makeHTTPRequest("delete", endpoint, nil)
 }
