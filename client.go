@@ -3,7 +3,7 @@ package tuneuptechnology
 import (
 	"bytes"
 	"encoding/json"
-	"io"
+	"io/ioutil"
 	"log"
 	"net/http"
 	"strings"
@@ -78,7 +78,7 @@ func (client *Client) makeHTTPRequest(method string, endpoint string, data inter
 	}
 	defer response.Body.Close()
 
-	responseData, err := io.ReadAll(response.Body)
+	responseData, err := ioutil.ReadAll(response.Body)
 	if err != nil {
 		log.Fatal(err)
 	}
