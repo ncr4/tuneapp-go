@@ -66,17 +66,29 @@ Up-to-date API documentation can be [found here](https://app.tuneuptechnology.co
 When re-recording cassettes, comment out the `delete` tests until all other tests have recorded cassettes. This ensures the records that are required to exist will still be active. Once the retrieve and update cassettes have been recorded, uncomment the delete tests and run again to record those cassettes.
 
 ```bash
-# Run tests
-API_EMAIL=email@example.com API_KEY=123... go test ./test
+# Build the project
+make build
 
-# Lint project
-golangci-lint run
+# Install the project globally from source
+make install
+
+# Clean the executables
+make clean
+
+# Test the project
+API_EMAIL=email@example.com API_KEY=123... make test
+
+## Get test coverage
+API_EMAIL=email@example.com API_KEY=123... make coverage
+
+# Lint the project (requires golangci-lint be installed)
+make lint
 ```
 
 ## Releasing
 
 As a separate PR from the feature/bug PR:
 
-1. Update the Version constant in `version.go`
+1. Update the Version constant in `client.go`
 1. Update `CHANGELOG`
 1. Create a GitHub tag with proper Go version semantics (eg: v1.0.0)
