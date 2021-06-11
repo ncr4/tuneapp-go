@@ -21,11 +21,14 @@ type Client struct {
 	Timeout int
 	// Version is the version of this client library
 	Version string
+	// Client is an HTTP client used to make API requests
+	Client *http.Client
 }
 
 // Version is the client library version
 const Version = "3.0.0"
 
+// Timeout is the number of seconds before a request will timeout
 const Timeout = 10
 
 // UserAgent sets the user-agent for requests
@@ -37,6 +40,15 @@ func (client *Client) baseURL() string {
 		return client.BaseURL
 	}
 	return "https://app.tuneuptechnology.com/api"
+}
+
+func (client *Client) httpClient() *http.Client {
+	if client.Client != nil {
+		return client.Client
+	}
+	return &http.Client{
+		Timeout: time.Second * time.Duration(client.Timeout),
+	}
 }
 
 // New returns a new Client with the given API email and key
@@ -59,10 +71,6 @@ func (client *Client) makeHTTPRequest(method string, endpoint string, data inter
 		log.Fatal(err)
 	}
 
-	httpClient := &http.Client{
-		Timeout: time.Second * time.Duration(client.Timeout),
-	}
-
 	request, err := http.NewRequest(strings.ToUpper(method), endpoint, bytes.NewBuffer(jsonData))
 	request.Header.Set("Accept", "application/json")
 	request.Header.Set("User-Agent", UserAgent)
@@ -72,7 +80,7 @@ func (client *Client) makeHTTPRequest(method string, endpoint string, data inter
 		log.Fatal(err)
 	}
 
-	response, err := httpClient.Do(request)
+	response, err := client.httpClient().Do(request)
 	if err != nil {
 		log.Fatal(err)
 	}

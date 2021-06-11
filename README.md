@@ -19,20 +19,18 @@ go get -u github.com/tuneuptechnology/tuneuptechnology-go
 package main
 
 import (
-	"github.com/tuneuptechnology/tuneuptechnology-go"
+	"encoding/json"
+	"fmt"
 	"os"
+
+	"github.com/tuneuptechnology/tuneuptechnology-go"
 )
 
 func main() {
-	// Setup your email and API key
-	apiEmail := os.Getenv("API_EMAIL")
-	apiKey := os.Getenv("API_KEY")
+	client := tuneuptechnology.New(os.Getenv("API_EMAIL"), os.Getenv("API_KEY"))
 
-	// Create a customer passing in all required params
-	customer := tuneuptechnology.CreateCustomer(
+	customer := client.CreateCustomer(
 		&tuneuptechnology.Customer{
-			Auth:       apiEmail,
-			APIKey:     apiKey,
 			Firstname:  "Jake",
 			Lastname:   "Peralta",
 			Email:      "jake@example.com",
@@ -43,9 +41,12 @@ func main() {
 		},
 	)
 
-	tuneuptechnology.PrettyPrint(customer)
+	prettyJSON, err := json.MarshalIndent(customer, "", "    ")
+	if err != nil {
+		fmt.Fprintln(os.Stderr, "error creating JSON:", err)
+	}
+	fmt.Printf("%s\n", string(prettyJSON))
 }
-
 ```
 
 Other examples can be found in the `/examples` directory. Alter according to your needs.
@@ -59,6 +60,18 @@ API_EMAIL=email@example.com API_KEY=123... go run create_customer.go
 ## Documentation
 
 Up-to-date API documentation can be [found here](https://app.tuneuptechnology.com/docs/api).
+
+## Development
+
+When re-recording cassettes, comment out the `delete` tests until all other tests have recorded cassettes. This ensures the records that are required to exist will still be active. Once the retrieve and update cassettes have been recorded, uncomment the delete tests and run again to record those cassettes.
+
+```bash
+# Run tests
+API_EMAIL=email@example.com API_KEY=123... go test ./test
+
+# Lint project
+golangci-lint run
+```
 
 ## Releasing
 

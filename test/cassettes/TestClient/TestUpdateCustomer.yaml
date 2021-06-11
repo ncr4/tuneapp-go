@@ -1,0 +1,36 @@
+---
+version: 1
+interactions:
+- request:
+    body: '{"firstname":"Jake","lastname":"Peralta","email":"jake@example.com","phone":"8015551234","user_id":1,"notes":"Believes
+      he is a good detective.","location_id":1}'
+    form: {}
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - TuneupTechnologyApp/GoClient/3.0.0
+    url: http://tuneapp.localhost/api/customers/1
+    method: PATCH
+  response:
+    body: '{"error":"Not found.","message":"No customer found."}'
+    headers:
+      Cache-Control:
+      - no-cache, private
+      Content-Length:
+      - "53"
+      Content-Type:
+      - application/json
+      Date:
+      - Fri, 11 Jun 2021 06:20:09 GMT
+      Server:
+      - nginx
+      X-Powered-By:
+      - PHP/7.4.15
+      X-Ratelimit-Limit:
+      - "60"
+      X-Ratelimit-Remaining:
+      - "55"
+    status: 422 Unprocessable Entity
+    code: 422
+    duration: ""
