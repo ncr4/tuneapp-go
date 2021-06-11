@@ -3,6 +3,8 @@
 The Go client library for the Tuneup Technology App.
 
 [![Build Status](https://github.com/tuneuptechnology/tuneuptechnology-go/workflows/build/badge.svg)](https://github.com/tuneuptechnology/tuneuptechnology-go/actions)
+[![Coverage Status](https://coveralls.io/repos/github/tuneuptechnology/tuneuptechnology-go/badge.svg?branch=main)](https://coveralls.io/github/tuneuptechnology/tuneuptechnology-go?branch=main)
+[![Version](https://img.shields.io/github/v/tag/tuneuptechnology/tuneuptechnology-go)](https://github.com/tuneuptechnology/tuneuptechnology-go/releases)
 [![Licence](https://img.shields.io/github/license/tuneuptechnology/tuneuptechnology-go)](LICENSE)
 
 This library allows you to interact with the customers, tickets, inventory, and locations objects without needing to do the hard work of binding your calls and data to endpoints. Simply call an action such as `CreateCustomer` and pass some data and let the library do the rest.
