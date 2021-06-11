@@ -1,17 +1,23 @@
 package tuneuptechnology
 
-import "strconv"
+import (
+	"strconv"
+	"time"
+)
 
 // Customer lists all properties of a customer
 type Customer struct {
-	ID         int    `json:"id,omitempty"`
-	Firstname  string `json:"firstname,omitempty"`
-	Lastname   string `json:"lastname,omitempty"`
-	Email      string `json:"email,omitempty"`
-	Phone      string `json:"phone,omitempty"`
-	UserID     int    `json:"user_id,omitempty"`
-	Notes      string `json:"notes,omitempty"`
-	LocationID int    `json:"location_id,omitempty"`
+	ID         int        `json:"id,omitempty"`
+	Firstname  string     `json:"firstname,omitempty"`
+	Lastname   string     `json:"lastname,omitempty"`
+	Email      string     `json:"email,omitempty"`
+	Phone      string     `json:"phone,omitempty"`
+	UserID     int        `json:"user_id,omitempty"`
+	Notes      string     `json:"notes,omitempty"`
+	LocationID int        `json:"location_id,omitempty"`
+	CreatedAt  *time.Time `json:"created_at,omitempty"`
+	UpdatedAt  *time.Time `json:"updated_at,omitempty"`
+	DeletedAt  *time.Time `json:"deleted_at,omitempty"`
 }
 
 // CreateCustomer creates a customer

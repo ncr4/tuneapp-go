@@ -12,7 +12,7 @@ func main() {
 	client := tuneuptechnology.New(os.Getenv("API_EMAIL"), os.Getenv("API_KEY"))
 
 	customer := client.UpdateCustomer(
-		1,
+		23,
 		&tuneuptechnology.Customer{
 			Firstname:  "Jake",
 			Lastname:   "Peralta",

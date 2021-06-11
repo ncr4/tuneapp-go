@@ -3,7 +3,7 @@ version: 1
 interactions:
 - request:
     body: '{"firstname":"Jake","lastname":"Peralta","email":"jake@example.com","phone":"8015551234","user_id":1,"notes":"Believes
-      he is a good detective.","location_id":1}'
+      he is a good detective.","location_id":2}'
     form: {}
     headers:
       Accept:
@@ -13,16 +13,18 @@ interactions:
     url: http://tuneapp.localhost/api/customers/1
     method: PATCH
   response:
-    body: '{"error":"Not found.","message":"No customer found."}'
+    body: '{"id":1,"firstname":"Jake","lastname":"Peralta","email":"jake@example.com","phone":"8015551234","user_id":1,"notes":"Believes
+      he is a good detective.","created_at":"2021-06-11 15:43:10","updated_at":"2021-06-11
+      15:51:53","deleted_at":null,"location_id":2}'
     headers:
       Cache-Control:
       - no-cache, private
       Content-Length:
-      - "53"
+      - "255"
       Content-Type:
       - application/json
       Date:
-      - Fri, 11 Jun 2021 06:20:09 GMT
+      - Fri, 11 Jun 2021 15:51:53 GMT
       Server:
       - nginx
       X-Powered-By:
@@ -30,7 +32,7 @@ interactions:
       X-Ratelimit-Limit:
       - "60"
       X-Ratelimit-Remaining:
-      - "55"
-    status: 422 Unprocessable Entity
-    code: 422
+      - "56"
+    status: 200 OK
+    code: 200
     duration: ""

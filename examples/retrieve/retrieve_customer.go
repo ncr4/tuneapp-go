@@ -11,7 +11,7 @@ import (
 func main() {
 	client := tuneuptechnology.New(os.Getenv("API_EMAIL"), os.Getenv("API_KEY"))
 
-	customer := client.RetrieveCustomer(1)
+	customer := client.RetrieveCustomer(23)
 
 	prettyJSON, err := json.MarshalIndent(customer, "", "    ")
 	if err != nil {

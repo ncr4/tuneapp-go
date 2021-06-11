@@ -9,21 +9,20 @@ interactions:
       - application/json
       User-Agent:
       - TuneupTechnologyApp/GoClient/3.0.0
-    url: http://tuneapp.localhost/api/customers/1
-    method: DELETE
+    url: http://tuneapp.localhost/api/locations/1
+    method: GET
   response:
-    body: '{"id":1,"firstname":"Jake","lastname":"Peralta","email":"jake@example.com","phone":"8015551234","user_id":1,"notes":"Believes
-      he is a good detective.","created_at":"2021-06-11 15:43:10","updated_at":"2021-06-11
-      16:19:47","deleted_at":"2021-06-11 16:19:47","location_id":2}'
+    body: '{"id":1,"name":"Rodriguez Group","street":"159 Purdy Branch","city":"Harveymouth","state":"IN","zip":"35343","created_at":"2021-06-11
+      15:43:10","updated_at":"2021-06-11 15:43:10","deleted_at":null}'
     headers:
       Cache-Control:
       - no-cache, private
       Content-Length:
-      - "272"
+      - "197"
       Content-Type:
       - application/json
       Date:
-      - Fri, 11 Jun 2021 16:19:47 GMT
+      - Fri, 11 Jun 2021 16:09:56 GMT
       Server:
       - nginx
       X-Powered-By:
@@ -31,7 +30,7 @@ interactions:
       X-Ratelimit-Limit:
       - "60"
       X-Ratelimit-Remaining:
-      - "55"
+      - "57"
     status: 200 OK
     code: 200
     duration: ""

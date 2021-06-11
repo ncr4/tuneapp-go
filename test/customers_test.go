@@ -20,22 +20,22 @@ func (c *ClientTests) TestCreateCustomer() {
 			Phone:      "8015551234",
 			UserID:     1,
 			Notes:      "Believes he is a good detective.",
-			LocationID: 1,
+			LocationID: 2,
 		},
 	)
 
-	assert.Equal(customer["message"], "Customer created successfully.")
+	assert.Equal(customer["firstname"], "Jake")
 }
 
 func (c *ClientTests) TestRetrieveCustomer() {
 	client := c.TestClient()
-	assert := c.Assert()
+	require := c.Require()
 
 	client.BaseURL = "http://tuneapp.localhost/api"
 
 	customer := client.RetrieveCustomer(1)
 
-	assert.Equal(customer["message"], "Customer retrieved successfully.")
+	require.NotNil(customer["firstname"])
 }
 
 func (c *ClientTests) TestAllCustomers() {
@@ -44,10 +44,9 @@ func (c *ClientTests) TestAllCustomers() {
 
 	client.BaseURL = "http://tuneapp.localhost/api"
 
-	customer := client.AllCustomers()
+	customers := client.AllCustomers()
 
-	assert.Equal(customer["message"], "Customers retrieved successfully.")
-	assert.Greater(reflect.ValueOf(customer["data"]).Len(), 1)
+	assert.Greater(reflect.ValueOf(customers["data"]).Len(), 1)
 }
 
 func (c *ClientTests) TestUpdateCustomer() {
@@ -65,20 +64,20 @@ func (c *ClientTests) TestUpdateCustomer() {
 			Phone:      "8015551234",
 			UserID:     1,
 			Notes:      "Believes he is a good detective.",
-			LocationID: 1,
+			LocationID: 2,
 		},
 	)
 
-	assert.Equal(customer["message"], "Customer updated successfully.")
+	assert.Equal(customer["firstname"], "Jake")
 }
 
 func (c *ClientTests) TestDeleteCustomer() {
 	client := c.TestClient()
-	assert := c.Assert()
+	require := c.Require()
 
 	client.BaseURL = "http://tuneapp.localhost/api"
 
 	customer := client.DeleteCustomer(1)
 
-	assert.Equal(customer["message"], "Customer deleted successfully.")
+	require.NotNil(customer["deleted_at"])
 }

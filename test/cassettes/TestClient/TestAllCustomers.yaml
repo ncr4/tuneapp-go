@@ -12,32 +12,31 @@ interactions:
     url: http://tuneapp.localhost/api/customers
     method: GET
   response:
-    body: '{"data":{"current_page":1,"data":[{"id":1,"firstname":"Cleve Hudson","lastname":"Ora
-      Marks","email":"deshawn78@example.org","phone":"8018981234","user_id":1,"notes":"Quisquam
-      quibusdam provident et aut blanditiis.","created_at":"2021-06-11 06:19:42","updated_at":"2021-06-11
-      06:19:42","deleted_at":null,"location_id":1},{"id":2,"firstname":"Jovany Veum","lastname":"Michael
-      Barrows","email":"turcotte.stanton@example.com","phone":"8018981234","user_id":1,"notes":"Quia
-      doloribus temporibus perferendis ipsam a tenetur cumque.","created_at":"2021-06-11
-      06:19:42","updated_at":"2021-06-11 06:19:42","deleted_at":null,"location_id":1},{"id":3,"firstname":"Ms.
-      Kenna Stiedemann","lastname":"Dr. Lenna Hartmann","email":"fkeebler@example.com","phone":"8018981234","user_id":1,"notes":"Sunt
-      officia corporis aut voluptatibus rerum.","created_at":"2021-06-11 06:19:42","updated_at":"2021-06-11
-      06:19:42","deleted_at":null,"location_id":1},{"id":4,"firstname":"Katelin Wolf","lastname":"Dr.
-      Walter Kozey","email":"reinger.gregoria@example.net","phone":"8018981234","user_id":1,"notes":"Magnam
-      placeat voluptates sit minima culpa aut sunt aut.","created_at":"2021-06-11
-      06:19:42","updated_at":"2021-06-11 06:19:42","deleted_at":null,"location_id":1},{"id":5,"firstname":"Dr.
-      Naomi Rutherford","lastname":"Kyle Romaguera","email":"brekke.laisha@example.org","phone":"8018981234","user_id":1,"notes":"Et
-      dolorum officiis consequatur pariatur magni corrupti.","created_at":"2021-06-11
-      06:19:42","updated_at":"2021-06-11 06:19:42","deleted_at":null,"location_id":1}],"first_page_url":"http:\/\/tuneapp.localhost\/api\/customers?page=1","from":1,"last_page":1,"last_page_url":"http:\/\/tuneapp.localhost\/api\/customers?page=1","next_page_url":null,"path":"http:\/\/tuneapp.localhost\/api\/customers","per_page":20,"prev_page_url":null,"to":5,"total":5},"message":"Customers
-      retrieved successfully."}'
+    body: '{"current_page":1,"data":[{"id":1,"firstname":"Deondre Baumbach","lastname":"Dr.
+      Sabina Jacobs IV","email":"alycia.luettgen@example.net","phone":"8018981234","user_id":1,"notes":"Quod
+      quaerat explicabo qui atque minima et.","created_at":"2021-06-11 15:43:10","updated_at":"2021-06-11
+      15:43:10","deleted_at":null,"location_id":1},{"id":2,"firstname":"Olen Smitham","lastname":"Coby
+      Smith","email":"lowell.roob@example.net","phone":"8018981234","user_id":1,"notes":"Eos
+      expedita fuga et omnis qui qui repudiandae.","created_at":"2021-06-11 15:43:10","updated_at":"2021-06-11
+      15:43:10","deleted_at":null,"location_id":1},{"id":3,"firstname":"Savanah Sawayn","lastname":"Emanuel
+      Adams","email":"jameson.torp@example.net","phone":"8018981234","user_id":1,"notes":"Aliquam
+      distinctio doloribus qui occaecati est.","created_at":"2021-06-11 15:43:10","updated_at":"2021-06-11
+      15:43:10","deleted_at":null,"location_id":1},{"id":4,"firstname":"Prof. Harley
+      Reynolds","lastname":"Miss Eleanore Terry","email":"kassulke.lysanne@example.net","phone":"8018981234","user_id":1,"notes":"Dolorem
+      saepe saepe voluptatem quis.","created_at":"2021-06-11 15:43:10","updated_at":"2021-06-11
+      15:43:10","deleted_at":null,"location_id":1},{"id":5,"firstname":"Ms. Adrienne
+      Nicolas II","lastname":"Afton O''Keefe","email":"eulah97@example.net","phone":"8018981234","user_id":1,"notes":"In
+      aut et sunt quasi reiciendis ex quo.","created_at":"2021-06-11 15:43:10","updated_at":"2021-06-11
+      15:43:10","deleted_at":null,"location_id":1}],"first_page_url":"http:\/\/tuneapp.localhost\/api\/customers?page=1","from":1,"last_page":1,"last_page_url":"http:\/\/tuneapp.localhost\/api\/customers?page=1","next_page_url":null,"path":"http:\/\/tuneapp.localhost\/api\/customers","per_page":20,"prev_page_url":null,"to":5,"total":5}'
     headers:
       Cache-Control:
       - no-cache, private
       Content-Length:
-      - "1886"
+      - "1791"
       Content-Type:
       - application/json
       Date:
-      - Fri, 11 Jun 2021 06:20:08 GMT
+      - Fri, 11 Jun 2021 15:51:52 GMT
       Server:
       - nginx
       X-Powered-By:
