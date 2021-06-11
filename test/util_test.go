@@ -48,5 +48,5 @@ func (c *ClientTests) SetupTest() {
 }
 
 func (c *ClientTests) TearDownTest() {
-	c.recorder.Stop()
+	_ = c.recorder.Stop()
 }
