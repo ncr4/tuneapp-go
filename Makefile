@@ -21,7 +21,7 @@ test:
 
 ## coverage - Get test coverage
 coverage: 
-	go test ./test -coverprofile=covprofile
+	go test ./test -coverprofile=covprofile -coverpkg=./...
 
 ## lint - Lint the project
 lint:
