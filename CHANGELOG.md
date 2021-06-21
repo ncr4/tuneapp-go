@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## v3.0.0 (2021-06-11)
+## v3.0.0 (2021-06-21)
 
 * Updates entire library to be compliant with the new v2 API (endpoints, HTTP methods, etc)
 * Build requests via a Client now providing your email and apiKey
