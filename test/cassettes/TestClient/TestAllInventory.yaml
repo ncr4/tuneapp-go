@@ -1,0 +1,45 @@
+---
+version: 1
+interactions:
+- request:
+    body: "null"
+    form: {}
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - TuneupTechnologyApp/GoClient/3.0.0
+    url: http://tuneapp.localhost/api/inventory
+    method: GET
+  response:
+    body: '{"current_page":1,"data":[{"id":1,"name":"praesentium","quantity":"6","created_at":"2021-06-11
+      15:43:10","updated_at":"2021-06-11 15:43:10","deleted_at":null,"inventory_type_id":1,"part_number":"958016","sku":"948953","notes":"Dolore
+      aperiam fuga fuga voluptate ipsa.","part_price":null,"location_id":1},{"id":2,"name":"quas","quantity":"4","created_at":"2021-06-11
+      15:43:10","updated_at":"2021-06-11 15:43:10","deleted_at":null,"inventory_type_id":1,"part_number":"537137","sku":"872750","notes":"Velit
+      voluptas eligendi sed rerum quia molestiae nobis excepturi.","part_price":null,"location_id":1},{"id":3,"name":"id","quantity":"3","created_at":"2021-06-11
+      15:43:10","updated_at":"2021-06-11 15:43:10","deleted_at":null,"inventory_type_id":1,"part_number":"87248","sku":"356647","notes":"Molestias
+      velit doloremque et voluptate dolores.","part_price":null,"location_id":1},{"id":4,"name":"esse","quantity":"3","created_at":"2021-06-11
+      15:43:10","updated_at":"2021-06-11 15:43:10","deleted_at":null,"inventory_type_id":1,"part_number":"860278","sku":"735380","notes":"Consequatur
+      qui dignissimos voluptatem minima unde.","part_price":null,"location_id":1},{"id":5,"name":"non","quantity":"2","created_at":"2021-06-11
+      15:43:10","updated_at":"2021-06-11 15:43:10","deleted_at":null,"inventory_type_id":1,"part_number":"754134","sku":"820413","notes":"Vel
+      maxime dignissimos voluptas ut ducimus odit temporibus.","part_price":null,"location_id":1}],"first_page_url":"http:\/\/tuneapp.localhost\/api\/inventory?page=1","from":1,"last_page":1,"last_page_url":"http:\/\/tuneapp.localhost\/api\/inventory?page=1","next_page_url":null,"path":"http:\/\/tuneapp.localhost\/api\/inventory","per_page":20,"prev_page_url":null,"to":5,"total":5}'
+    headers:
+      Cache-Control:
+      - no-cache, private
+      Content-Length:
+      - "1733"
+      Content-Type:
+      - application/json
+      Date:
+      - Fri, 11 Jun 2021 16:02:48 GMT
+      Server:
+      - nginx
+      X-Powered-By:
+      - PHP/7.4.15
+      X-Ratelimit-Limit:
+      - "60"
+      X-Ratelimit-Remaining:
+      - "59"
+    status: 200 OK
+    code: 200
+    duration: ""

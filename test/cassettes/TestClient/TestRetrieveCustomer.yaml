@@ -1,0 +1,37 @@
+---
+version: 1
+interactions:
+- request:
+    body: "null"
+    form: {}
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - TuneupTechnologyApp/GoClient/3.0.0
+    url: http://tuneapp.localhost/api/customers/1
+    method: GET
+  response:
+    body: '{"id":1,"firstname":"Deondre Baumbach","lastname":"Dr. Sabina Jacobs IV","email":"alycia.luettgen@example.net","phone":"8018981234","user_id":1,"notes":"Quod
+      quaerat explicabo qui atque minima et.","created_at":"2021-06-11 15:43:10","updated_at":"2021-06-11
+      15:43:10","deleted_at":null,"location_id":1}'
+    headers:
+      Cache-Control:
+      - no-cache, private
+      Content-Length:
+      - "302"
+      Content-Type:
+      - application/json
+      Date:
+      - Fri, 11 Jun 2021 15:51:52 GMT
+      Server:
+      - nginx
+      X-Powered-By:
+      - PHP/7.4.15
+      X-Ratelimit-Limit:
+      - "60"
+      X-Ratelimit-Remaining:
+      - "57"
+    status: 200 OK
+    code: 200
+    duration: ""

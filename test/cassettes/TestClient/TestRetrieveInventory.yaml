@@ -1,0 +1,37 @@
+---
+version: 1
+interactions:
+- request:
+    body: "null"
+    form: {}
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - TuneupTechnologyApp/GoClient/3.0.0
+    url: http://tuneapp.localhost/api/inventory/1
+    method: GET
+  response:
+    body: '{"id":1,"name":"praesentium","quantity":"6","created_at":"2021-06-11 15:43:10","updated_at":"2021-06-11
+      15:43:10","deleted_at":null,"inventory_type_id":1,"part_number":"958016","sku":"948953","notes":"Dolore
+      aperiam fuga fuga voluptate ipsa.","part_price":null,"location_id":1}'
+    headers:
+      Cache-Control:
+      - no-cache, private
+      Content-Length:
+      - "277"
+      Content-Type:
+      - application/json
+      Date:
+      - Fri, 11 Jun 2021 16:02:48 GMT
+      Server:
+      - nginx
+      X-Powered-By:
+      - PHP/7.4.15
+      X-Ratelimit-Limit:
+      - "60"
+      X-Ratelimit-Remaining:
+      - "57"
+    status: 200 OK
+    code: 200
+    duration: ""

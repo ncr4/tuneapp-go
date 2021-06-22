@@ -1,0 +1,45 @@
+---
+version: 1
+interactions:
+- request:
+    body: "null"
+    form: {}
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - TuneupTechnologyApp/GoClient/3.0.0
+    url: http://tuneapp.localhost/api/locations
+    method: GET
+  response:
+    body: '{"current_page":1,"data":[{"id":1,"name":"Rodriguez Group","street":"159
+      Purdy Branch","city":"Harveymouth","state":"IN","zip":"35343","created_at":"2021-06-11
+      15:43:10","updated_at":"2021-06-11 15:43:10","deleted_at":null},{"id":2,"name":"Erdman,
+      King and Leffler","street":"3787 Triston Street Apt. 180","city":"Tyreseton","state":"WY","zip":"20056","created_at":"2021-06-11
+      15:43:10","updated_at":"2021-06-11 15:43:10","deleted_at":null},{"id":3,"name":"Wehner-Legros","street":"240
+      Terry Shoals","city":"New Robbside","state":"ID","zip":"84203","created_at":"2021-06-11
+      15:43:10","updated_at":"2021-06-11 15:43:10","deleted_at":null},{"id":4,"name":"Pagac-O''Kon","street":"33807
+      Marco Coves","city":"Marabury","state":"MI","zip":"1280","created_at":"2021-06-11
+      15:43:10","updated_at":"2021-06-11 15:43:10","deleted_at":null},{"id":5,"name":"Will,
+      Bailey and Gerlach","street":"9675 Hegmann Lights","city":"West Kristoffer","state":"OR","zip":"3305","created_at":"2021-06-11
+      15:43:10","updated_at":"2021-06-11 15:43:10","deleted_at":null}],"first_page_url":"http:\/\/tuneapp.localhost\/api\/locations?page=1","from":1,"last_page":1,"last_page_url":"http:\/\/tuneapp.localhost\/api\/locations?page=1","next_page_url":null,"path":"http:\/\/tuneapp.localhost\/api\/locations","per_page":20,"prev_page_url":null,"to":5,"total":5}'
+    headers:
+      Cache-Control:
+      - no-cache, private
+      Content-Length:
+      - "1328"
+      Content-Type:
+      - application/json
+      Date:
+      - Fri, 11 Jun 2021 16:09:56 GMT
+      Server:
+      - nginx
+      X-Powered-By:
+      - PHP/7.4.15
+      X-Ratelimit-Limit:
+      - "60"
+      X-Ratelimit-Remaining:
+      - "59"
+    status: 200 OK
+    code: 200
+    duration: ""

@@ -1,0 +1,50 @@
+---
+version: 1
+interactions:
+- request:
+    body: "null"
+    form: {}
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - TuneupTechnologyApp/GoClient/3.0.0
+    url: http://tuneapp.localhost/api/tickets
+    method: GET
+  response:
+    body: '{"current_page":1,"data":[{"id":1,"customer_id":1,"ticket_type_id":1,"serial":"821693","user_id":1,"notes":"Ipsa
+      eveniet eaque aut ipsam in nihil.","title":"Voluptatem voluptates numquam adipisci
+      delectus.","status":1,"created_at":"2021-06-11 15:43:10","updated_at":"2021-06-11
+      15:43:10","deleted_at":null,"device":"iPhone 12","imei":"233604","location_id":1},{"id":2,"customer_id":1,"ticket_type_id":1,"serial":"166214","user_id":1,"notes":"Aut
+      ut enim dolorum enim temporibus beatae natus.","title":"Praesentium ad labore
+      nihil reiciendis sunt ut voluptatum.","status":1,"created_at":"2021-06-11 15:43:10","updated_at":"2021-06-11
+      15:43:10","deleted_at":null,"device":"iPhone 12","imei":"423045","location_id":1},{"id":3,"customer_id":1,"ticket_type_id":1,"serial":"199813","user_id":1,"notes":"Suscipit
+      qui maxime atque minus.","title":"Incidunt ipsa culpa voluptas consequuntur
+      vero.","status":1,"created_at":"2021-06-11 15:43:10","updated_at":"2021-06-11
+      15:43:10","deleted_at":null,"device":"iPhone 12","imei":"938269","location_id":1},{"id":4,"customer_id":1,"ticket_type_id":1,"serial":"30901","user_id":1,"notes":"Rem
+      voluptas placeat reprehenderit delectus recusandae placeat ipsum.","title":"Necessitatibus
+      eveniet soluta vel.","status":1,"created_at":"2021-06-11 15:43:10","updated_at":"2021-06-11
+      15:43:10","deleted_at":null,"device":"iPhone 12","imei":"660348","location_id":1},{"id":5,"customer_id":1,"ticket_type_id":1,"serial":"458327","user_id":1,"notes":"Dignissimos
+      totam rerum et nihil reiciendis assumenda.","title":"Cumque et sint et corporis
+      eum sit esse.","status":1,"created_at":"2021-06-11 15:43:10","updated_at":"2021-06-11
+      15:43:10","deleted_at":null,"device":"iPhone 12","imei":"509952","location_id":1}],"first_page_url":"http:\/\/tuneapp.localhost\/api\/tickets?page=1","from":1,"last_page":1,"last_page_url":"http:\/\/tuneapp.localhost\/api\/tickets?page=1","next_page_url":null,"path":"http:\/\/tuneapp.localhost\/api\/tickets","per_page":20,"prev_page_url":null,"to":5,"total":5}'
+    headers:
+      Cache-Control:
+      - no-cache, private
+      Content-Length:
+      - "2014"
+      Content-Type:
+      - application/json
+      Date:
+      - Fri, 11 Jun 2021 16:19:23 GMT
+      Server:
+      - nginx
+      X-Powered-By:
+      - PHP/7.4.15
+      X-Ratelimit-Limit:
+      - "60"
+      X-Ratelimit-Remaining:
+      - "59"
+    status: 200 OK
+    code: 200
+    duration: ""
