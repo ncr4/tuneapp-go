@@ -12,7 +12,7 @@ This library allows you to interact with the customers, tickets, inventory, and 
 ## Install
 
 ```bash
-go get -u github.com/tuneuptechnology/tuneuptechnology-go
+go get -u github.com/tuneuptechnology/tuneuptechnology-go/v3
 ```
 
 ## Example
@@ -25,7 +25,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/tuneuptechnology/tuneuptechnology-go"
+	"github.com/tuneuptechnology/tuneuptechnology-go/v3"
 )
 
 func main() {

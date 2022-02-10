@@ -11,7 +11,7 @@ import (
 	"github.com/dnaeon/go-vcr/cassette"
 	"github.com/dnaeon/go-vcr/recorder"
 	"github.com/stretchr/testify/suite"
-	"github.com/tuneuptechnology/tuneuptechnology-go"
+	"github.com/tuneuptechnology/tuneuptechnology-go/v3"
 )
 
 type ClientTests struct {

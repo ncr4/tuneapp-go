@@ -1,6 +1,12 @@
 # CHANGELOG
 
+## v3.0.1 (2022-02-10)
+
+* Corrects the module namespace by appending `/v3`
+
 ## v3.0.0 (2021-06-21)
+
+**NOTE: Do not use this release as it was not packaged properly, use v3.0.1+**
 
 * Updates entire library to be compliant with the new v2 API (endpoints, HTTP methods, etc)
 * Build requests via a Client now providing your email and apiKey

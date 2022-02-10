@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/tuneuptechnology/tuneuptechnology-go"
+	"github.com/tuneuptechnology/tuneuptechnology-go/v3"
 )
 
 func main() {

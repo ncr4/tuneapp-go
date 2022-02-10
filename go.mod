@@ -1,4 +1,4 @@
-module github.com/tuneuptechnology/tuneuptechnology-go
+module github.com/tuneuptechnology/tuneuptechnology-go/v3
 
 go 1.15
 

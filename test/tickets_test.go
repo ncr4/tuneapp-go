@@ -3,7 +3,7 @@ package tuneuptechnology_test
 import (
 	"reflect"
 
-	"github.com/tuneuptechnology/tuneuptechnology-go"
+	"github.com/tuneuptechnology/tuneuptechnology-go/v3"
 )
 
 func (c *ClientTests) TestCreateTicket() {

@@ -26,7 +26,7 @@ type Client struct {
 }
 
 // Version is the client library version
-const Version = "3.0.0"
+const Version = "3.0.1"
 
 // Timeout is the number of seconds before a request will timeout
 const Timeout = 10
